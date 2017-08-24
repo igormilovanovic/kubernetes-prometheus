@@ -46,7 +46,7 @@ spec:
           # timeoutSeconds: 1
         volumeMounts:
         - name: grafana-persistent-storage
-          mountPath: /var/grafana
+          mountPath: /var
       volumes:
       - name: grafana-persistent-storage
         hostPath:

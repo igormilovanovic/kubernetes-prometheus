@@ -407,7 +407,8 @@ spec:
           mountPath: /var
       volumes:
       - name: grafana-persistent-storage
-        emptyDir: {}
+        hostPath:
+          path: /var/monitoring/grafana
 ---
 apiVersion: v1
 data:
@@ -2586,7 +2587,7 @@ spec:
     protocol: TCP
   selector:
     app: kube-state-metrics
-    
+
 ---
 apiVersion: extensions/v1beta1
 kind: DaemonSet
