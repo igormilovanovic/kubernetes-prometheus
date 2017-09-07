@@ -45,9 +45,19 @@ spec:
           # initialDelaySeconds: 30
           # timeoutSeconds: 1
         volumeMounts:
+        # - name: grafana-config
+        #   mountPath: /etc/grafana
+        # - name: grafana-dashboards
+        #   mountPath: /var/lib/grafana/dashboards
         - name: grafana-persistent-storage
-          mountPath: /var
+          mountPath: /var/lib/grafana/
       volumes:
+      # - name: grafana-config
+      #   hostPath:
+      #     path: /var/monitoring/grafana/etc/grafana
+      # - name: grafana-dashboards
+      #   hostPath:
+      #     path: /var/monitoring/grafana/dashboards
       - name: grafana-persistent-storage
         hostPath:
-          path: /var/monitoring/grafana
+          path: /var/monitoring/grafana/data

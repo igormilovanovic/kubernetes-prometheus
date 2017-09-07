@@ -9,7 +9,7 @@ metadata:
   annotations:
     prometheus.io/scrape: 'true'
 spec:
-  type: NodePort
+  # type: NodePort
   ports:
     - port: 9090
       protocol: TCP

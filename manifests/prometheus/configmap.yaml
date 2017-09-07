@@ -8,6 +8,11 @@ data:
     rule_files:
       - "/etc/prometheus-rules/*.rules"
     scrape_configs:
+      # jmx exporter
+      - job_name: 'jmx-exporter'
+        static_configs:
+          - targets:
+            - prometheus-jmx-exporter.monitoring.svc.cluster.local:9138
 
       # https://github.com/prometheus/prometheus/blob/master/documentation/examples/prometheus-kubernetes.yml#L37
       - job_name: 'kubernetes-nodes'
@@ -104,6 +109,7 @@ data:
           - source_labels: [__meta_kubernetes_pod_container_port_number]
             action: keep
             regex: 9\d{3}
+
 kind: ConfigMap
 metadata:
   creationTimestamp: null

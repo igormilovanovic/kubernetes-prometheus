@@ -39,7 +39,12 @@ spec:
           mountPath: /etc/prometheus
         - name: rules-volume
           mountPath: /etc/prometheus-rules
+        # - name: store-volume
+        #   mountPath: /prometheus
       volumes:
+      # - name: store-volume
+      #   hostPath:
+      #     path: /var/monitoring/prometheus
       - name: config-volume
         configMap:
           name: prometheus-core
