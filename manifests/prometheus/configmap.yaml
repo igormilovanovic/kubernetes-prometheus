@@ -8,11 +8,18 @@ data:
     rule_files:
       - "/etc/prometheus-rules/*.rules"
     scrape_configs:
-      # jmx exporter
-      - job_name: 'jmx-exporter'
+      - job_name: 'broker-jmx'
         static_configs:
-          - targets:
-            - prometheus-jmx-exporter.monitoring.svc.cluster.local:9138
+          - targets: ['message-broker.techday.svc.cluster.local:31500']
+
+      - job_name: invader-service
+        metrics_path: /metrics
+        scheme: http
+        static_configs:
+          - targets: ['invader-service.techday.svc.cluster.local:8080']
+      # - job_name: etcd
+      #   static_configs:
+      #   - targets: ['etcd-kmaster.kube-system.svc.cluster.local']
 
       # https://github.com/prometheus/prometheus/blob/master/documentation/examples/prometheus-kubernetes.yml#L37
       - job_name: 'kubernetes-nodes'
@@ -109,7 +116,6 @@ data:
           - source_labels: [__meta_kubernetes_pod_container_port_number]
             action: keep
             regex: 9\d{3}
-
 kind: ConfigMap
 metadata:
   creationTimestamp: null
