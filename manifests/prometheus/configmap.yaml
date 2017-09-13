@@ -20,6 +20,7 @@ data:
       # - job_name: etcd
       #   static_configs:
       #   - targets: ['etcd-kmaster.kube-system.svc.cluster.local']
+
       # https://github.com/prometheus/prometheus/blob/master/documentation/examples/prometheus-kubernetes.yml#L37
       - job_name: 'kubernetes-nodes'
         tls_config:
